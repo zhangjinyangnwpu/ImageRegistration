@@ -1,20 +1,11 @@
 # ImageRegistration
 A demo that implement image registration by matching SIFT descriptor and appling affine transformation.
 
-```bash
-requirements
-
-opencv
-numpy
-numba
-```
-
-
 
 ```
 python image_registration
 
-output may:
+outputs may like:
 gt_info:
 [[ 0.9409774   1.15946488]
  [ 1.99787199 -0.78970898]] 
@@ -45,7 +36,7 @@ ransac:
 ```python
 fab gpu_test
 
-output may like:
+outputs may like:
 (2, 1000) (2, 1000)
 gt_info:
  A:
@@ -67,6 +58,6 @@ Done.
 
 ```
 
-ref:
+reference:
 
 https://github.com/ThomIves/LeastSquaresPurePy
