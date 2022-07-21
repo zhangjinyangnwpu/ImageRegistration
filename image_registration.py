@@ -5,9 +5,12 @@
 
 
 import numpy as np
+from regex import P
 from affine_ransac import Ransac
 from align_transform import Align
 from affine_transform import Affine
+import matplotlib.pyplot as plt
+
 
 
 # Affine Transform
@@ -18,14 +21,14 @@ from affine_transform import Affine
 # -------------------------------------------------------------
 # Test Class Affine
 # -------------------------------------------------------------
-
+point_num = 1000
 # Create instance
 af = Affine()
 
 # Generate a test case as validation with
 # a rate of outliers
 outlier_rate = 0.9
-A_true, t_true, pts_s, pts_t = af.create_test_case(outlier_rate)
+A_true, t_true, pts_s, pts_t = af.create_test_case(outlier_rate,point_num=1000)
 
 # At least 3 corresponding points to
 # estimate affine transformation
@@ -37,22 +40,36 @@ A_test, t_test = af.estimate_affine(pts_s[:, idx], pts_t[:, idx])
 # Display known parameters with estimations
 # They should be same when outlier_rate equals to 0,
 # otherwise, they are totally different in some cases
-print(A_true, '\n', t_true)
-print(A_test, '\n', t_test)
+print("gt_info:")
+print(A_true, '\n', t_true, '\n')
+print("estimate_affine:")
+print(A_test, '\n', t_test, '\n')
 
 # -------------------------------------------------------------
 # Test Class Ransac
 # -------------------------------------------------------------
 
 # Create instance
-rs = Ransac(K=3, threshold=1)
+rs = Ransac(K=K, threshold=1)
 
 residual = rs.residual_lengths(A_test, t_test, pts_s, pts_t)
 
 # Run RANSAC to estimate affine tansformation when
 # too many outliers in points set
 A_rsc, t_rsc, inliers = rs.ransac_fit(pts_s, pts_t)
-print(A_rsc, '\n', t_rsc)
+print("ransac:")
+print(A_rsc, '\n', t_rsc, '\n')
+
+colors = ['green' if i in inliers[0] else 'red' for i in range(point_num)]
+colors = np.array(colors)
+
+plt.subplot(1, 2, 1)
+plt.scatter(pts_s[0,:], pts_s[1,:],c=colors)
+
+plt.subplot(1, 2, 2)
+plt.scatter(pts_t[0,:], pts_t[1,:],c=colors)
+
+plt.show()
 
 # -------------------------------------------------------------
 # Test Class Align

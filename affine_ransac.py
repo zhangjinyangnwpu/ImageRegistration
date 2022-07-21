@@ -9,7 +9,7 @@ from affine_transform import Affine
 
 
 # The number of iterations in RANSAC
-ITER_NUM = 2000
+ITER_NUM = 1000
 
 
 class Ransac():

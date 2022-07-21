@@ -9,7 +9,7 @@ import numpy as np
 
 class Affine():
 
-    def create_test_case(self, outlier_rate=0):
+    def create_test_case(self, outlier_rate=0,point_num=1000):
         ''' CREATE_TEST_CASE
 
             Randomly generate a test case of affine transformation.
@@ -36,7 +36,7 @@ class Affine():
         t = 20 * np.random.rand(2, 1) - 10
 
         # Set the number of points in test case
-        num = 1000
+        num = point_num
 
         # Compute the number of outliers and inliers respectively
         outliers = int(np.round(num * outlier_rate))

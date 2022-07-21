@@ -183,7 +183,7 @@ class Align():
 
         # Merge warped image with target image to display
         merge = np.uint8(target * 0.5 + warp * 0.5)
-
+        cv2.imwrite("Images/merge.png",merge)
         # Show the result
         cv2.imshow('img', merge)
         cv2.waitKey(0)
