@@ -1,4 +1,6 @@
-# ImageRegistration
+# ImageRegistration 
+##  1. with opencv and numpy
+##  2. with pure numba mode on GPU 
 A demo that implement image registration by matching SIFT descriptor and appling affine transformation.
 
 
