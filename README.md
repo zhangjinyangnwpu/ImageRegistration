@@ -1,8 +1,8 @@
 # ImageRegistration 
-##  1. with opencv and numpy
-##  2. with pure numba mode on GPU 
-A demo that implement image registration by matching SIFT descriptor and appling affine transformation.
 
+##  1、image registration with opencv and numpy
+    
+A demo that implement image registration by matching SIFT descriptor and appling affine transformation.
 
 ```
 python image_registration
@@ -32,8 +32,8 @@ ransac:
 ![描述](Images/mona_source.png)![描述](Images/mona_target.jpg)![描述](Images/merge.png)
 
 
-
-## add numba code with ransac on cuda (without numpy function)
+## 2、 ransac implement with pure numba code on GPU 
+### add numba code with ransac on cuda (without numpy function)
 
 ```python
 fab gpu_test
